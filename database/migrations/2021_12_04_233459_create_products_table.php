@@ -22,6 +22,8 @@ class CreateProductsTable extends Migration
         });
 
         \DB::statement('ALTER TABLE products AUTO_INCREMENT = 100;');
+
+        DB::unprepared(File::get(storage_path('sql/products.sql')));
     }
 
     /**

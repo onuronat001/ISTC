@@ -19,6 +19,8 @@ class CreateCustomersTable extends Migration
             $table->date('since');
             $table->decimal('revenue', $precision = 8, $scale = 2);
         });
+
+        DB::unprepared(File::get(storage_path('sql/customers.sql')));
     }
 
     /**

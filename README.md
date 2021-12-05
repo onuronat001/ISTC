@@ -10,16 +10,36 @@ Bir sipariş RESTful Api servisidir.
 
 ## Kurulum
 
+### 1. İndirme
+
+Repoyu ISTC isimli klasöre klonluyoruz.
+
+```
+git clone https://github.com/onuronat001/ISTC ISTC
+```
+
+### 2. Docker
+
 Eğer docker yoksa; https://docs.docker.com/ adresinden docker için gerekli kurulumları yapabilirsiniz.
 
-Repoyu indirdikten sonra.
 ```
 cd ~/ISTC/
-docker-compose up
+docker-compose up -d
 ```
 > Docker containerlarımızı hazır hale getiriyoruz.
 > - Nginx web sunucumuz 8000 üzerinden yayın yapıyor.
 > - Mysql veritabanı sunucumuz 3307 üzerinden yayın yapıyor.
+
+### 3. Migration
+
+Docker containerlarımız çalışınca artık laravel için veritabanını hazır hale getiriyoruz.
+
+```
+docker exec istc_app_1 php artisan migrate
+```
+
+> Migration ile tüm tablolar oluşturuluyor, "Ürünler" ve "Müşteriler" için örnek dataları veritabanına ekliyor.
+
 
 ## RESTful Api
 
@@ -45,7 +65,7 @@ curl --location --request GET 'localhost:8000/api/order' \
 
 ##### Örnek Curl İsteği
 ```
-curl --location --request GET 'localhost:8000/api/order/17' \
+curl --location --request GET 'localhost:8000/api/order/1' \
 --header 'Content-Type: application/json'
 ```
 
@@ -81,7 +101,7 @@ curl --location --request POST 'localhost:8000/api/order/1' \
 
 ##### Örnek Curl İsteği
 ```
-curl --location --request DELETE 'localhost:8000/api/order/17' \
+curl --location --request DELETE 'localhost:8000/api/order/1' \
 --header 'Content-Type: application/json'
 ```
 
@@ -98,6 +118,6 @@ curl --location --request DELETE 'localhost:8000/api/order/17' \
 
 ##### Örnek Curl İsteği
 ```
-curl --location --request GET 'localhost:8000/api/discount/17' \
+curl --location --request GET 'localhost:8000/api/discount/1' \
 --header 'Content-Type: application/json'
 ```
