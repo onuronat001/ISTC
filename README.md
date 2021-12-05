@@ -23,7 +23,7 @@ git clone https://github.com/onuronat001/ISTC ISTC
 Eğer docker yoksa; https://docs.docker.com/ adresinden docker için gerekli kurulumları yapabilirsiniz.
 
 ```
-cd ~/ISTC/
+cd ISTC/
 docker-compose up -d
 ```
 > Docker containerlarımızı hazır hale getiriyoruz.
