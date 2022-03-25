@@ -24,3 +24,7 @@ Route::delete('/order/{orderId}', [OrderController::class, 'delete']);
 
 // Discount Route
 Route::get('/discount/{orderId}', [DiscountController::class, 'index']);
+
+/**
+ * 
+ */
